@@ -54,8 +54,10 @@ jobs:
       - name: Publish GitHub Release
         uses: ncipollo/release-action@v1
         with:
-          tag: v1.0.${{ github.run_number }}
-          name: Release v1.0.${{ github.run_number }}
+          tag: v1.0.${{ github.run_number }}.${{ github.run_attempt }}
+          name: Release v1.0.${{ github.run_number }}.${{ github.run_attempt }}
+          commit: ${{ github.sha }}
+          immutableCreate: true
           makeLatest: true
           prerelease: false
           artifacts: dist/release/oh2p.tar.gz,dist/release/oh2p.tar.gz.sha256
